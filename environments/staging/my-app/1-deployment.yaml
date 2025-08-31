@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: alexnsa/nginx:v0.1.3
+          image: alexnsa/nginx-lesson159-private:v0.1.1
           ports:
             - containerPort: 80
