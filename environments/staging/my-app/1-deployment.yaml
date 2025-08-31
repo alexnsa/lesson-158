@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: alexnsa/nginx-lesson159-private:v0.1.1
+          image: 562455595575.dkr.ecr.eu-west-1.amazonaws.com/my-python-app:1.0.0
           ports:
             - containerPort: 80
-      imagePullSecrets:
-        - name: regcred2
+      # imagePullSecrets:
+      #   - name: regcred2
