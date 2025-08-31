@@ -1,0 +1,26 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx
+  namespace: staging
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip # fargate can only use ip mode
+    # https://youtube.com/clip/UgkxWFP0IR4uCWpCDFCS1iZwju5k-pzaR_f6?si=flqyRQM5GBgPg1mM
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:562455595575:certificate/efbd73bc-7179-4b6e-9a85-ce38ece1f53e
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+spec:
+  ingressClassName: alb 
+  rules:
+    - host: nginx.astro-phoenix.com
+      http:
+        paths:
+          - path: /
+            pathType: Exact
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 80
